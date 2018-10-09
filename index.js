@@ -11,12 +11,17 @@ function Phrase(content) {
 
   // Returns content processed for palindrome testing.
   this.processedContent = function processedContent() {
-    return (this.content.match(/[a-z]/gi) || []).join("").toLowerCase();
+  const lettersRegEx = /[a-z]/gi;
+    return (this.content.match(lettersRegEx) || []).join("").toLowerCase();
   }
 
   // Returns true if the phrase is a palindrome, false otherwise.
   this.palindrome = function palindrome() {
-    return this.processedContent() === this.processedContent().reverse();
+    if (this.processedContent()) {
+      return this.processedContent() === this.processedContent().reverse();
+    } else {
+      return false;
+    }
   }
 
   // Returns the phrase in all caps
